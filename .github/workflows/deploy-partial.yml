@@ -1,0 +1,22 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  deploy-to-test:
+    name: Deploy To Test Env
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - uses: sfdx-actions/setup-sfdx@v1
+      with:
+        sfdx-auth-url: ${{ secrets.PARTIAL_SANDBOX_AUTH }}
+    
+    - name: Deploy
+      run: sfdx force:source:deploy --manifest manifest/delta-package.xml
