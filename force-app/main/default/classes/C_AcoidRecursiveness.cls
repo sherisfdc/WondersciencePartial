@@ -7,4 +7,6 @@ public class C_AcoidRecursiveness {
     
     public static boolean callTowebhook = true;
 
+    public static boolean testingVariable = true;
+
 }
