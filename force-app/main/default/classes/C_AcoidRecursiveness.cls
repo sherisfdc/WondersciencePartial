@@ -8,5 +8,6 @@ public class C_AcoidRecursiveness {
     public static boolean callTowebhook = true;
 
     public static boolean newbranch = false;
+    public static boolean newbranch1 = false;
 
 }
