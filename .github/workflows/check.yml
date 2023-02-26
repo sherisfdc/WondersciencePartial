@@ -1,0 +1,22 @@
+name: Validate
+
+on:
+  pull_request:
+    branches:
+      - develop
+
+jobs:
+  validate-deploy:
+    name: Validate Deployment
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - uses: sfdx-actions/setup-sfdx@v1
+      with:
+        sfdx-auth-url: ${{ secrets.PARTIAL_SANDBOX_AUTH }}
+    
+    - name: Validate
+      run: sfdx force:source:deploy --checkonly --manifest manifest/delta-package.xml
